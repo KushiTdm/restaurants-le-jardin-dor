@@ -7,7 +7,9 @@
 :root {
   --or: #C9A84C;
   --or-light: #E8C97A;
+  --or-dark: #9E7A2E;
   --noir: #1a1a1a;
+  --noir-soft: #2c2415;
   --creme: #F5F0E8;
 }
 
@@ -19,19 +21,40 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--creme);
   color: var(--noir);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  body { font-size: 18px; }
 }
 
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
 }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Selection */
+::selection { background: var(--or); color: var(--noir); }
+
+/* Scrollbar accents */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--noir); }
+::-webkit-scrollbar-thumb { background: var(--or-dark); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--or); }
 
 .gold-divider {
   width: 60px;
@@ -41,17 +64,68 @@ h1, h2, h3, h4 {
 }
 
 .btn-gold {
-  @apply inline-block px-8 py-3 border border-or text-or tracking-widest uppercase text-sm transition-all duration-300;
+  @apply inline-flex items-center justify-center px-6 sm:px-8 py-3 border border-or text-or tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 relative overflow-hidden;
 }
-
-.btn-gold:hover {
-  @apply bg-or text-noir;
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--or);
+  transform: translateY(101%);
+  transition: transform 0.4s ease;
+  z-index: -1;
 }
+.btn-gold:hover { color: var(--noir); }
+.btn-gold:hover::before { transform: translateY(0); }
 
 .btn-gold-fill {
-  @apply inline-block px-8 py-3 bg-or text-noir tracking-widest uppercase text-sm transition-all duration-300;
+  @apply inline-flex items-center justify-center px-6 sm:px-8 py-3 bg-or text-noir tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 relative overflow-hidden;
 }
+.btn-gold-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--or-light);
+  transform: translateY(101%);
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+.btn-gold-fill > * { position: relative; z-index: 1; }
+.btn-gold-fill:hover::before { transform: translateY(0); }
 
-.btn-gold-fill:hover {
-  @apply bg-or-light;
+/* Image wrapper utilities */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+}
+.img-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(26,26,26,0.55) 100%);
+  pointer-events: none;
+}
+.img-frame img { transition: transform 0.9s ease; }
+.img-frame:hover img { transform: scale(1.06); }
+
+/* Reveal initial hidden (GSAP overrides) */
+[data-reveal], [data-stagger] > * { opacity: 0; }
+
+/* Safety fallback: if JS/GSAP fails or is delayed > 4s, reveal anyway */
+@keyframes revealFallback { to { opacity: 1; visibility: visible; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+[data-reveal] { animation: revealFallback 0s linear 4s forwards; }
+[data-stagger] > * { animation: revealFallback 0s linear 4s forwards; }
+
+/* Hide scrollbar utility (mobile horizontal nav) */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal], [data-stagger] > * { opacity: 1 !important; transform: none !important; }
 }
