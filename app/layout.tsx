@@ -3,6 +3,7 @@ import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import GsapProvider from './components/GsapProvider'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Le Jardin d\'Or — Restaurant Gastronomique',
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </GsapProvider>
       </body>
     </html>
