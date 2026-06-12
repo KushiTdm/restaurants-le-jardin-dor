@@ -47,8 +47,20 @@ export default function Footer() {
           <Link href="/reservation" className="btn-gold mt-6 text-xs inline-block">Réserver</Link>
         </div>
       </div>
-      <div className="relative max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-or/20 text-center">
+      <div className="relative max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-or/20 text-center space-y-3">
         <p className="font-cormorant text-xs tracking-widest uppercase">© 2025 Le Jardin d'Or — Tous droits réservés</p>
+        <p className="font-cormorant text-xs tracking-wider">
+          Conçu &amp; développé par{' '}
+          <a
+            href="https://neuraweb.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-or hover:text-or/80 transition-colors"
+          >
+            NeuraWeb
+          </a>
+          {' '}— agence web, automatisation &amp; intégration IA
+        </p>
       </div>
     </footer>
   )
