@@ -26,6 +26,33 @@ const specialites = [
   },
 ]
 
+const avis = [
+  {
+    nom: 'Camille L.',
+    date: 'il y a 2 semaines',
+    texte: 'Une soirée absolument magique. Le soufflé au Grand Marnier est à tomber. Service aux petits soins, cadre raffiné — une adresse d\'exception.',
+  },
+  {
+    nom: 'Thomas B.',
+    date: 'il y a 1 mois',
+    texte: 'Cuisine gastronomique d\'une grande finesse. Les Saint-Jacques étaient parfaitement cuites. On reviendra pour un anniversaire, c\'est certain.',
+  },
+  {
+    nom: 'Sophie M.',
+    date: 'il y a 1 mois',
+    texte: 'Le pigeon en croûte d\'herbes est un pur bonheur. Accueil chaleureux et sommelier de grand talent. Le rapport qualité-plaisir est au rendez-vous.',
+  },
+]
+
+const GoogleG = () => (
+  <svg className="w-5 h-5 ml-auto" viewBox="0 0 48 48" aria-label="Google">
+    <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+    <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+    <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z" />
+    <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z" />
+  </svg>
+)
+
 export default function HomePage() {
   return (
     <>
@@ -154,6 +181,74 @@ export default function HomePage() {
 
         <div className="text-center mt-10 sm:mt-12" data-reveal>
           <Link href="/menu" className="btn-gold">Voir la carte complète</Link>
+        </div>
+      </section>
+
+      {/* Avis Google */}
+      <section className="bg-creme border-t border-or/15">
+        <div className="max-w-6xl mx-auto px-6 py-16 sm:py-24">
+          <div className="text-center mb-12 sm:mb-16" data-reveal>
+            <p className="font-cormorant text-or tracking-widest uppercase text-xs sm:text-sm mb-3">Ils nous ont visités</p>
+            <h2 className="font-playfair text-noir text-3xl sm:text-4xl md:text-5xl">Avis de nos convives</h2>
+            <div className="gold-divider mt-4" />
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mt-6">
+              <span className="text-or text-2xl tracking-[0.15em] leading-none">★★★★★</span>
+              <span className="font-cormorant text-noir text-lg">
+                <strong className="font-playfair">4,9</strong> / 5 · 428 avis Google
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" data-stagger>
+            {avis.map((a) => (
+              <article key={a.nom} className="bg-white border border-or/20 p-6 sm:p-8 flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 rounded-full bg-noir text-or flex items-center justify-center font-playfair text-lg shrink-0">
+                    {a.nom[0]}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-playfair text-noir text-base leading-none">{a.nom}</p>
+                    <p className="font-cormorant text-noir/50 text-sm mt-1">{a.date}</p>
+                  </div>
+                  <GoogleG />
+                </div>
+                <div className="text-or tracking-[0.15em] mb-3 leading-none">★★★★★</div>
+                <p className="font-cormorant text-noir/70 text-base leading-relaxed italic flex-1">« {a.texte} »</p>
+                <p className="font-cormorant text-noir/40 text-xs tracking-widest uppercase mt-5">Publié sur Google</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nous trouver */}
+      <section className="max-w-6xl mx-auto px-6 py-16 sm:py-24 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div data-reveal>
+          <p className="font-cormorant text-or tracking-widest uppercase text-xs sm:text-sm mb-3">Nous trouver</p>
+          <h2 className="font-playfair text-noir text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight">
+            Au cœur de Paris
+          </h2>
+          <div className="gold-divider ml-0" />
+          <ul className="font-cormorant text-noir/70 text-base sm:text-lg mt-6 space-y-3">
+            <li><span className="text-or">Adresse :</span> 24, rue Saint-Honoré, 75001 Paris</li>
+            <li><span className="text-or">Téléphone :</span> <a href="tel:+33142600000" className="hover:text-or transition-colors">+33 1 42 60 XX XX</a></li>
+            <li><span className="text-or">Métro :</span> Louvre-Rivoli (ligne 1)</li>
+            <li><span className="text-or">Horaires :</span> Mar–Sam · 12h–14h30 / 19h–22h30</li>
+          </ul>
+          <div className="flex flex-wrap gap-3 mt-8">
+            <a href="https://www.google.com/maps?q=24+rue+Saint-Honor%C3%A9,+75001+Paris" target="_blank" rel="noopener noreferrer" className="btn-gold">Itinéraire</a>
+            <Link href="/reservation" className="btn-gold-fill">Réserver une table</Link>
+          </div>
+        </div>
+        <div className="img-frame w-full aspect-[4/3] sm:h-[24rem] sm:aspect-auto" data-reveal data-reveal-delay="0.15">
+          <iframe
+            title="Le Jardin d'Or sur Google Maps"
+            src="https://www.google.com/maps?q=24+rue+Saint-Honor%C3%A9,+75001+Paris&output=embed"
+            className="w-full h-full"
+            style={{ border: 0, minHeight: 320 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
 
