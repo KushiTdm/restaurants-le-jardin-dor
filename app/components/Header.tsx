@@ -39,9 +39,8 @@ export default function Header() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          <Link href="/" className="flex flex-col items-start sm:items-center">
-            <span className="font-playfair text-or text-lg sm:text-2xl tracking-widest leading-none">Le Jardin d'Or</span>
-            <span className="font-cormorant text-creme/60 text-[10px] sm:text-xs tracking-[0.3em] uppercase mt-1">Restaurant Gastronomique</span>
+          <Link href="/" className="flex items-center" aria-label="Le Jardin d'Or — Accueil">
+            <img src="/logo.png" alt="Le Jardin d'Or" className="h-9 sm:h-12 w-auto" />
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             {links.map((l) => (

@@ -9,7 +9,7 @@ export default function Footer() {
       }} />
       <div className="relative max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-          <h3 className="font-playfair text-or text-xl mb-4 tracking-wider">Le Jardin d'Or</h3>
+          <img src="/logo.png" alt="Le Jardin d'Or" className="h-12 w-auto mb-4" />
           <div className="gold-divider !mx-0 !ml-0 mb-4" />
           <p className="font-cormorant text-sm leading-relaxed italic">
             Une expérience culinaire d'exception au cœur de Paris, où la gastronomie française rencontre l'art de vivre.
@@ -50,16 +50,15 @@ export default function Footer() {
       <div className="relative max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-or/20 text-center space-y-3">
         <p className="font-cormorant text-xs tracking-widest uppercase">© 2025 Le Jardin d'Or — Tous droits réservés</p>
         <p className="font-cormorant text-xs tracking-wider">
-          Conçu &amp; développé par{' '}
+          Site créé par{' '}
           <a
-            href="https://neuraweb.tech"
+            href="https://neuraweb.fr"
             target="_blank"
             rel="noopener noreferrer"
             className="text-or hover:text-or/80 transition-colors"
           >
-            NeuraWeb
+            NeuraWeb.fr
           </a>
-          {' '}— agence web, automatisation &amp; intégration IA
         </p>
       </div>
     </footer>
