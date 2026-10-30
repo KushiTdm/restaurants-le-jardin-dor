@@ -134,7 +134,7 @@ export default function HomePage() {
           </div>
           <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-4 bg-noir px-4 py-3 shadow-2xl border border-or/40">
             <p className="font-playfair text-or text-xl sm:text-2xl leading-none tracking-widest">★★</p>
-            <p className="font-cormorant text-creme/60 text-[10px] sm:text-xs tracking-widest uppercase mt-1">Michelin</p>
+            <p className="font-cormorant text-creme/60 text-xs md:text-[10px] sm:text-xs tracking-widest uppercase mt-1">Michelin</p>
           </div>
         </div>
       </section>
